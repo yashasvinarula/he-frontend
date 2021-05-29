@@ -10,7 +10,11 @@ class Checkout extends React.Component{
     }
   }
   render(){
-    const {itemCount, totalPrice, typeDiscount, discount, finalPrice} = this.props;    
+    let {itemCount, totalPrice, typeDiscount, discount, finalPrice} = this.props;
+    totalPrice = totalPrice.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    discount = discount.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    typeDiscount = typeDiscount.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    finalPrice = finalPrice.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
     return(
       <>
         <Segment attached>
@@ -22,19 +26,19 @@ class Checkout extends React.Component{
             <Grid.Row>
               <Grid.Column width={9}>Items({itemCount})</Grid.Column>
               <Grid.Column width={1}>:</Grid.Column>
-              <Grid.Column width={4}>${totalPrice}</Grid.Column>
+              <Grid.Column width={4} textAlign="right">${totalPrice}</Grid.Column>
             </Grid.Row>
             <br />
             <br />
             <Grid.Row>
               <Grid.Column width={9}>Discount</Grid.Column>
               <Grid.Column width={1}>:</Grid.Column>
-              <Grid.Column width={4}>-${discount}</Grid.Column>
+              <Grid.Column width={4} textAlign="right">-${discount}</Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column width={9}>Type Discount</Grid.Column>
               <Grid.Column width={1}>:</Grid.Column>
-              <Grid.Column width={4}>-${typeDiscount}</Grid.Column>
+              <Grid.Column width={4} textAlign="right">-${typeDiscount}</Grid.Column>
             </Grid.Row>
           </Grid>
           <br />
@@ -44,7 +48,7 @@ class Checkout extends React.Component{
             <Grid.Column width={9}>
               <Header as="h4">Total</Header>
             </Grid.Column>
-            <Grid.Column width={7} className="centered">
+            <Grid.Column width={7} className="" textAlign="right">
               <Header as="h4">
                 ${finalPrice}
               </Header>

@@ -5,7 +5,7 @@ export const calculatePrices = items => {
   let finalPrice = 0;
   let itemCount = 0;
   for(let item of items){
-    itemCount += item.quantity;
+    itemCount += item.quantity
     totalPrice += item.price*item.quantity;
     if(item.type === "fiction"){
       typeDiscount += item.price*item.quantity*(item.discount+15)/100;
